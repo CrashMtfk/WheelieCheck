@@ -1,0 +1,87 @@
+body{
+    background-color: #8D99AE;
+}
+
+.sign-in-holder{
+    width: 400px;
+    height: 600px;
+    margin: 212px auto 0 auto;
+    background-color: #2B2D42;
+    border-radius: 25px 25px 0px 0px;
+    box-shadow: -10px 10px 10px #171823;
+}
+
+.sign-in-holder p {
+    text-align: center;
+    padding-top: 10px;
+    color: #F8FCDA;
+}
+
+.sign-in-holder p a{
+    text-decoration: none;
+    color: #EF233C;
+    font-weight: 700;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 23px;
+}
+
+.holder-form-content{
+    display: flex;
+    justify-content: center;
+    padding-top: 53px;
+}
+
+.holder-form-content form label {
+    color: #F8FCDA;
+}
+
+.email-input-holder {
+    margin-bottom: 10px;
+}
+
+.email-input{
+    background-color: #8D99AE;
+    border: 1px solid #2B2D42;
+    border-radius: 50px;
+    width: 250px;
+    height: 35px;
+}
+
+.password-input-holder {
+    margin-bottom: 25px;
+}
+
+.password-input {
+    background-color: #8D99AE;
+    border: 1px solid #2B2D42;
+    border-radius: 50px;
+    width: 250px;
+    height: 35px;
+}
+
+.submit-button-holder {
+    text-align: center;
+}
+
+.submit-button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    background-color: #F8FCDA;
+    color: #2B2D42;
+    border: 2px solid #F8FCDA;
+    border-radius: 50px;
+    width: 125px;
+    height: 35px;
+}
+
+
