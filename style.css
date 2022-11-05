@@ -1,0 +1,7 @@
+nav {
+    display: inline-flex;
+}
+
+.flex-holder-content {
+    display: flex;
+}
