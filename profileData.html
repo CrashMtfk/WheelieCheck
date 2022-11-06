@@ -7,6 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link rel="stylesheet" href="profileData.css" />
+  <script>
+    var username = window.location.search.substr(1);
+    username = username.split("=")[1];
+    console.log(username)
+    localStorage.setItem("storeUserName", username);
+  </script>
 </head>
 
 <body>
@@ -16,8 +22,8 @@
     </div>
     <div class="nav-buttons">
       <ul style="display: flex">
-        <li><a href="">Profile</a></li>
-        <li><a href="">Car Details</a></li>
+        <li><a href="file:///C:/Users/MihaiPC/Desktop/siteHQT/WheelieCheck/profile.html">Profile</a></li>
+        <li><a>Car Details</a></li>
       </ul>
     </div>
     <div class="qr-holder">
@@ -75,8 +81,6 @@
 
     var username = window.location.search.substr(1);
     username = username.split("=")[1];
-    console.log(username.value)
-
 
     var name = document.getElementById('Name');
     var surname = document.getElementById('Surname');
@@ -87,6 +91,7 @@
     var sex2 = document.getElementById('F');
 
     var confirm = document.getElementById('submit');
+    var profilebtn = document.getElementById('btn');
 
     function InsertData() {
       var ele = document.getElementsByName('sexChosing');
@@ -127,7 +132,6 @@
     }
 
     confirm.addEventListener('click', InsertData);
-
   </script>
 </body>
 

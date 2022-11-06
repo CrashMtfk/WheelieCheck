@@ -1,49 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="profileStyle.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="profileStyle.css">
 </head>
+
 <body>
-    <nav>
-        <div class="nav-logo">
-          <img src="images/logo.png" alt="" />
-        </div>
-        <div class="nav-buttons">
-          <ul style="display: flex">
-            <li><a href="">Profile</a></li>
-            <li><a href="">Car Details</a></li>
-          </ul>
-        </div>
-        <div class="qr-holder">
-          <a href="">QR</a>
-        </div>
-    </nav>
-    <div class="main-content-holder">
-        <div class="profile-data-holder">
-            <img src="images/photoCarmen.jfif" alt="">
-            <p>Name: Trestian</p>
-            <p>Surname: Carmen</p>
-            <p>Age: 20</p>
-            <p>Country: Romania</p>
-            <p>City: Cluj-Napoca</p>
-        </div>
-        <div class="actions-section-holder">
-            <div class="action-button-list">
-                <button>Add Reminder</button>
-                <button>Add Event</button>
-                <button>Add Crash</button>
-            </div>
-            <div class="events-show-holder">
-                <p>test</p>
-            </div>
-        </div>
+  <nav>
+    <div class="nav-logo">
+      <img src="images/logo.png" alt="" />
     </div>
+    <div class="nav-buttons">
+      <ul style="display: flex">
+        <li><a href="">Profile</a></li>
+        <li><a href="">Car Details</a></li>
+      </ul>
+    </div>
+    <div class="qr-holder">
+      <a href="file:///C:/Users/MihaiPC/Desktop/siteHQT/WheelieCheck/qrPage.html">QR</a>
+    </div>
+  </nav>
 
 
-   
+
+  <div class="main-content-holder">
+    <div class="profile-data-holder">
+      <img src="https://images.saatchiart.com/saatchi/1129730/art/8453294/7517455-HSC00001-32.jpg" alt="">
+      <p>Name:</p>
+      <p id="nameValue"></p>
+      <p>Surname:</p>
+      <p id="surnameValue"></p>
+      <p>Age:</p>
+      <p id="ageValue"></p>
+      <p>Country:</p>
+      <p id="countryValue"></p>
+      <p>City:</p>
+      <p id="cityValue"></p>
+    </div>
+    <div class="actions-section-holder">
+      <div class="action-button-list">
+        <button>Add Reminder</button>
+        <button>Add Event</button>
+        <button>Add Crash</button>
+      </div>
+      <div class="events-show-holder">
+        <p>test</p>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDcPQLkoJISpnytpiCmrBcQT7MjBig_0OY",
+      authDomain: "wheeliecheck-d037b.firebaseapp.com",
+      databaseURL: "https://wheeliecheck-d037b-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "wheeliecheck-d037b",
+      storageBucket: "wheeliecheck-d037b.appspot.com",
+      messagingSenderId: "866023935277",
+      appId: "1:866023935277:web:12ca686d7f8d814b3a97a4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    import { getDatabase, ref, get, set, child }
+      from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
+
+
+    const db = getDatabase();
+
+
+    let getUserName = localStorage.getItem("storeUserName");
+    var age;
+    var city;
+    var country;
+    var name;
+    var surname;
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `Users/${getUserName}`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val())
+        document.getElementById("nameValue").innerHTML = snapshot.val().name;
+        document.getElementById("surnameValue").innerHTML = snapshot.val().surname;
+        document.getElementById("ageValue").innerHTML = snapshot.val().age;
+        document.getElementById("countryValue").innerHTML = snapshot.val().country;
+        document.getElementById("cityValue").innerHTML = snapshot.val().city;
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+
+  </script>
+
+
 </body>
+
 </html>
