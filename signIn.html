@@ -8,6 +8,10 @@
   <title>Document</title>
   <link rel="stylesheet" href="signInStyle.css" />
   <link rel="stylesheet" href="reset.css" />
+  <script>
+    function onSignIn()
+     {console.log("ceva")};    
+  </script>
 </head>
 
 <body>
@@ -23,14 +27,13 @@
           <input type="password" name="password" id="password" class="password-input" /><br />
         </div>
         <div class="submit-button-holder">
-          <input type="submit" id="submit" value="Sign In" class="submit-button" />
+          <button onclick="onSignIn()" class="submit">Sign In</button>
         </div>
     </div>
     <p>Don't have an account? <a href="index.html">Sign Up</a> here</p>
   </div>
 
   <script type="module">
-
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
 
     const firebaseConfig = {
