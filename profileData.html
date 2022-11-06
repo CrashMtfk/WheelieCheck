@@ -73,6 +73,11 @@
 
     const db = getDatabase();
 
+    var username = window.location.search.substr(1);
+    username = username.split("=")[1];
+    console.log(username.value)
+
+
     var name = document.getElementById('Name');
     var surname = document.getElementById('Surname');
     var age = document.getElementById('Age');
@@ -84,11 +89,10 @@
     var confirm = document.getElementById('submit');
 
     function InsertData() {
-      alert(localStorage.getItem("username"));
       var ele = document.getElementsByName('sexChosing');
 
       if (ele[0].checked) {
-        set(ref(db, "Users/" + name.value), {
+        set(ref(db, 'Users/' + username), {
           name: name.value,
           surname: surname.value,
           age: age.value,
@@ -104,7 +108,7 @@
           });
       }
       else {
-        set(ref(db, "Users/" + name.value), {
+        set(ref(db, "Users/" + username), {
           name: name.value,
           surname: surname.value,
           age: age.value,

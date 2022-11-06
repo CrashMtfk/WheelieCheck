@@ -19,7 +19,7 @@
         <input type="text" name="username" id="username" class="email-input" /><br />
       </div>
       <div class="submit-button-holder">
-        <button class="submit"><a href="file:///C:/Users/MihaiPC/Desktop/siteHQT/WheelieCheck/profileData.html">Sign In</a></button>
+        <button class="submit" id="submit">Sign In</button>
       </div>
     </div>
     <p>Don't have an account? <a href="index.html">Sign Up</a> here</p>
@@ -47,7 +47,23 @@
     const db = getDatabase();
 
     var username = document.getElementById('username');
+
+    function checkIfUser() {
+      const dbRef = ref(getDatabase());
+      get(child(dbRef, `Users/` + username.value)).then((snapshot) => {
+        if (snapshot.exists()) {
+          window.location.assign("file:///C:/Users/MihaiPC/Desktop/siteHQT/WheelieCheck/profileData.html?$username=" + username.value);
+        } else {
+          alert("Username inexistent.")
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
+
     var signInButton = document.getElementById('submit');
+
+    signInButton.addEventListener("click", checkIfUser);
 
   </script>
 </body>

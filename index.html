@@ -11,9 +11,9 @@
 
 <body>
   <nav>
-    <p>Already have an account?</p>
+    <p><h3>Already have an account?</h3></p>
     <div class="sign-in-button">
-      <button>Sign in</button>
+      <button><a href="file:///C:/Users/MihaiPC/Desktop/siteHQT/WheelieCheck/signIn.html">Sign in</a></button>
     </div>
   </nav>
   <div class="flex-holder-content">
@@ -30,11 +30,12 @@
     <div class="welcome-text-holder">
       <h1>Welcome to WheelieCheck</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non
-        lorem a ex tristique molestie quis at nunc. Cras vulputate lorem
-        sodales, ultrices ante eu, porta lectus. Aliquam ut urna condimentum,
-        consectetur turpis eu, tincidunt nulla. Cras quis metus rutrum,
-        ullamcorper mi eu, dapibus dui. In vestibulum diam sapien.
+        We are a team composed of 4 people, Rus Claudiu, Iosif Alexandru, Trestian Carmen, Oprea Mihai.
+        Our objective is to make life easier for people by using this webapp where you, as a user
+        can store information about your car, such as your car documents, and generate a QR Code with all the information
+        that you placed yourself there, to make it easier for the people that are interested in buying your car.
+        Another feature is setting yourself reminders when to check ur oil level, when to renew your RCA or if by
+        unfortunate events, you had an accident and need to register it here.
       </p>
     </div>
   </div>
@@ -84,7 +85,7 @@
       }
       else {
         set(ref(db, "Users/" + username.value), {
-          username: username.value,
+          username: username.value
         })
           .then(() => {
             alert("User successfully registered.");
