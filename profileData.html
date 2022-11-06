@@ -1,53 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="profileData.css" />
-  </head>
-  <body>
-    <nav>
-      <div class="nav-logo">
-        <img src="images/logo.png" alt="" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="profileData.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="nav-logo">
+      <img src="images/logo.png" alt="" />
+    </div>
+    <div class="nav-buttons">
+      <ul style="display: flex">
+        <li><a href="">Profile</a></li>
+        <li><a href="">Car Details</a></li>
+      </ul>
+    </div>
+    <div class="qr-holder">
+      <a href="">QR</a>
+    </div>
+  </nav>
+  <div class="data-getter-container">
+    <h2>Let's set up your profile</h2>
+    <div class="form-container">
+      <div class="form-column-container">
+        <label for="Name">Name</label><br />
+        <input type="text" name="" id="Name" /><br />
+        <label for="Surname">Surname</label><br />
+        <input type="text" name="" id="Surname" /><br />
+        <label for="Age">Age</label><br />
+        <input type="number" name="" id="Age" />
       </div>
-      <div class="nav-buttons">
-        <ul style="display: flex">
-          <li><a href="">Profile</a></li>
-          <li><a href="">Car Details</a></li>
-        </ul>
+      <div class="form-column-container">
+        <label for="Country">Country</label><br />
+        <input type="text" name="" id="Country" /><br />
+        <label for="City">City</label><br />
+        <input type="text" name="" id="City" /><br />
+        <label for="Sex">Sex</label><br />
+        <input type="radio" name="sexChosing" id="M" value="M" />
+        <label for="M">M</label>
+        <input type="radio" name="sexChosing" id="F" value="F" />
+        <label for="F">F</label>
       </div>
-      <div class="qr-holder">
-        <a href="">QR</a>
-      </div>
-    </nav>
-    <div class="data-getter-container">
-      <h2>Let's set up your profile</h2>
-      <div class="form-container">
-        <div class="form-column-container">
-          <label for="Name">Name</label><br />
-          <input type="text" name="" id="Name" /><br />
-          <label for="Surname">Surname</label><br />
-          <input type="text" name="" id="Surname" /><br />
-          <label for="Age">Age</label><br />
-          <input type="number" name="" id="Age" />
-        </div>
-        <div class="form-column-container">
-          <label for="Country">Country</label><br />
-          <input type="text" name="" id="Country" /><br />
-          <label for="City">City</label><br />
-          <input type="text" name="" id="City" /><br />
-          <label for="Sex">Sex</label><br />
-          <input type="radio" name="sexChosing" id="M" value="M" />
-          <label for="M">M</label>
-          <input type="radio" name="sexChosing" id="F" value="F" />
-          <label for="F">F</label>
-        </div>
-        <div class="submit-button-container">
-          <input type="submit" value="Confirm" />
-        </div>
+      <div class="submit-button-container">
+        <input type="submit" value="Confirm" id="submit" />
       </div>
     </div>
-  </body>
+  </div>
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDcPQLkoJISpnytpiCmrBcQT7MjBig_0OY",
+      authDomain: "wheeliecheck-d037b.firebaseapp.com",
+      databaseURL: "https://wheeliecheck-d037b-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "wheeliecheck-d037b",
+      storageBucket: "wheeliecheck-d037b.appspot.com",
+      messagingSenderId: "866023935277",
+      appId: "1:866023935277:web:12ca686d7f8d814b3a97a4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    import { getDatabase, ref, get, set }
+      from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
+
+
+    const db = getDatabase();
+
+    var name = document.getElementById('Name');
+    var surname = document.getElementById('Surname');
+    var age = document.getElementById('Age');
+    var country = document.getElementById('Country');
+    var city = document.getElementById('City');
+    var sex1 = document.getElementById('M');
+    var sex2 = document.getElementById('F');
+
+    var confirm = document.getElementById('submit');
+
+    function InsertData() {
+      var ele = document.getElementsByName('sexChosing');
+
+      if (ele[0].checked) {
+        set(ref(db, "Users/" + "Additional_data"), {
+          name: name.value,
+          surname: surname.value,
+          age: age.value,
+          country: country.value,
+          city: city.value,
+          sex1: sex1.value
+        })
+          .then(() => {
+            alert("User additional info added.");
+          })
+          .catch((error) => {
+            alert("Fail");
+          });
+      }
+      else {
+        set(ref(db, "Users/" + "Additional_data"), {
+          name: name.value,
+          surname: surname.value,
+          age: age.value,
+          country: country.value,
+          city: city.value,
+          sex2: sex2.value
+        })
+          .then(() => {
+            alert("User additional info added.");
+          })
+          .catch((error) => {
+            alert("Fail");
+          });
+      }
+
+    }
+
+    confirm.addEventListener('click', InsertData);
+
+  </script>
+</body>
+
 </html>
