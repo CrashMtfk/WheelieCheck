@@ -1,32 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="signInStyle.css" />
-    <link rel="stylesheet" href="reset.css" />
-  </head>
-  <body>
-    <div class="sign-in-holder">
-      <img src="images/logo.png" alt="Logo of the WheelieCheck" class="logo" />
-      <div class="holder-form-content">
-        <form action="">
-          <label for="Email">E-mail</label><br />
-          <div class="email-input-holder">
-            <input type="email" name="" id="Email" class="email-input" /><br />
-          </div>
-          <label for="Password">Password</label><br />
-          <div class="password-input-holder">
-            <input type="password" name="" id="Password" class="password-input"/><br />
-          </div>
-          <div class="submit-button-holder">
-            <input type="submit" value="Sign In" class="submit-button" />
-          </div>
-        </form>
-      </div>
-      <p>Don't have an account? <a href="index.html">Sign Up</a> here</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="signInStyle.css" />
+  <link rel="stylesheet" href="reset.css" />
+</head>
+
+<body>
+  <div class="sign-in-holder">
+    <img src="images/logo.png" alt="Logo of the WheelieCheck" class="logo" />
+    <div class="holder-form-content">
+        <label for="username">Username</label><br />
+        <div class="email-input-holder">
+          <input type="text" name="username" id="username" class="email-input" /><br />
+        </div>
+        <label for="password">Password</label><br />
+        <div class="password-input-holder">
+          <input type="password" name="password" id="password" class="password-input" /><br />
+        </div>
+        <div class="submit-button-holder">
+          <input type="submit" id="submit" value="Sign In" class="submit-button" />
+        </div>
     </div>
-  </body>
+    <p>Don't have an account? <a href="index.html">Sign Up</a> here</p>
+  </div>
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDcPQLkoJISpnytpiCmrBcQT7MjBig_0OY",
+      authDomain: "wheeliecheck-d037b.firebaseapp.com",
+      databaseURL: "https://wheeliecheck-d037b-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "wheeliecheck-d037b",
+      storageBucket: "wheeliecheck-d037b.appspot.com",
+      messagingSenderId: "866023935277",
+      appId: "1:866023935277:web:12ca686d7f8d814b3a97a4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    import { getDatabase, ref, get, set, child }
+      from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
+
+
+    const db = getDatabase();
+
+    var username = document.getElementById('username');
+    var password = document.getElementById('password');
+    var signInButton = document.getElementById('submit');
+    var exists = 0;
+
+    
+  </script>
+</body>
+
 </html>

@@ -68,9 +68,8 @@
 
     const app = initializeApp(firebaseConfig);
 
-    import { getDatabase, ref, get, set }
-      from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
-
+    import { getDatabase, ref, get, set, child }
+      from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
 
     const db = getDatabase();
 
@@ -88,7 +87,7 @@
       var ele = document.getElementsByName('sexChosing');
 
       if (ele[0].checked) {
-        set(ref(db, "Users/" + "Additional_data"), {
+        set(ref(db, "Users/"), {
           name: name.value,
           surname: surname.value,
           age: age.value,

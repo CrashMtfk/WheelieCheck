@@ -21,11 +21,11 @@
     <div class="sign-up-holder">
       <img src="images/logo.png" alt="Image with WheelieCheck logo" />
       <div class="sign-up-div-holder">
-          <label for="username">Username:</label> <br />
-          <input type="text" id="username" required /><br />
-          <label for="password">Password:</label> <br />
-          <input type="password" id="password" required /> <br />
-          <button type="submit" id="submit">Submit</button>
+        <label for="username">Username:</label> <br />
+        <input type="text" id="username" required /><br />
+        <label for="password">Password:</label> <br />
+        <input type="password" id="password" required /> <br />
+        <button type="submit" id="submit">Submit</button>
       </div>
     </div>
     <div class="welcome-text-holder">
@@ -56,7 +56,7 @@
 
     const app = initializeApp(firebaseConfig);
 
-    import { getDatabase, ref, get, set }
+    import { getDatabase, ref, get, set, child }
       from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 
 
@@ -65,13 +65,27 @@
     var username = document.getElementById('username');
     var password = document.getElementById('password');
     var submitBtn = document.getElementById('submit');
+    var exists = 0;
 
     function InsertData() {
-      if(username.value.length < 4) {
-        alert("BOMBAAAAAAAAAAA");
+      const dbRef = ref(getDatabase());
+      get(child(dbRef, `Users/`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          exists = 1;
+        } else {
+          exists = 0;
+        }
+      }).catch((error) => {
+        alert(error);
+      });
+      if (username.value.length < 4) {
+        alert("Username is too short.");
       }
-      else if(password.value.length < 4) {
-        alert("Parola baaaaaaaa");
+      else if (password.value.length < 4) {
+        alert("Password is too short.");
+      }
+      else if(exists == 1) {
+        alert("User exists already.");
       }
       else {
         console.log("GGAGAG")
