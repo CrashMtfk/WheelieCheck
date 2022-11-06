@@ -34,16 +34,21 @@ body{
 
 .holder-form-content{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    width: 65%;
+    margin: auto;
     padding-top: 53px;
 }
 
-.holder-form-content form label {
+.holder-form-content label {
     color: #F8FCDA;
+    font-weight: 700;
+    font-size: 18px;
+    padding-left: 0.5em;
 }
 
 .email-input-holder {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .email-input{
