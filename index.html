@@ -1,43 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="reset.css" />
-  </head>
-  <body>
-    <nav>
-      <p>Already have an account?</p>
-      <div class="sign-in-button">
-        <button>Sign in</button>
-      </div>
-    </nav>
-    <div class="flex-holder-content">
-      <div class="sign-up-holder">
-        <img src="images/logo.png" alt="Image with WheelieCheck logo" />
-        <div class="sign-up-div-holder">
-          <form action="" class="sign-up-form">
-            <label for="email">E-mail:</label> <br />
-            <input type="email" name="" id="email" /><br />
-            <label for="password">Password:</label> <br />
-            <input type="password" name="" id="password" /> <br />
-            <input type="submit" value="Sign Up" />
-          </form>
-        </div>
-      </div>
-      <div class="welcome-text-holder">
-        <h1>Welcome to WheelieCheck</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non
-          lorem a ex tristique molestie quis at nunc. Cras vulputate lorem
-          sodales, ultrices ante eu, porta lectus. Aliquam ut urna condimentum,
-          consectetur turpis eu, tincidunt nulla. Cras quis metus rutrum,
-          ullamcorper mi eu, dapibus dui. In vestibulum diam sapien.
-        </p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="reset.css" />
+</head>
+
+<body>
+  <nav>
+    <p>Already have an account?</p>
+    <div class="sign-in-button">
+      <button>Sign in</button>
+    </div>
+  </nav>
+  <div class="flex-holder-content">
+    <div class="sign-up-holder">
+      <img src="images/logo.png" alt="Image with WheelieCheck logo" />
+      <div class="sign-up-div-holder">
+          <label for="username">Username:</label> <br />
+          <input type="text" id="username" required /><br />
+          <label for="password">Password:</label> <br />
+          <input type="password" id="password" required /> <br />
+          <button type="submit" id="submit">Submit</button>
       </div>
     </div>
-  </body>
+    <div class="welcome-text-holder">
+      <h1>Welcome to WheelieCheck</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non
+        lorem a ex tristique molestie quis at nunc. Cras vulputate lorem
+        sodales, ultrices ante eu, porta lectus. Aliquam ut urna condimentum,
+        consectetur turpis eu, tincidunt nulla. Cras quis metus rutrum,
+        ullamcorper mi eu, dapibus dui. In vestibulum diam sapien.
+      </p>
+    </div>
+  </div>
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDcPQLkoJISpnytpiCmrBcQT7MjBig_0OY",
+      authDomain: "wheeliecheck-d037b.firebaseapp.com",
+      databaseURL: "https://wheeliecheck-d037b-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "wheeliecheck-d037b",
+      storageBucket: "wheeliecheck-d037b.appspot.com",
+      messagingSenderId: "866023935277",
+      appId: "1:866023935277:web:12ca686d7f8d814b3a97a4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    import { getDatabase, ref, get, set }
+      from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
+
+
+    const db = getDatabase();
+
+    var username = document.getElementById('username');
+    var password = document.getElementById('password');
+    var submitBtn = document.getElementById('submit');
+
+    function InsertData() {
+      if(username.value.length < 4) {
+        alert("BOMBAAAAAAAAAAA");
+      }
+      else if(password.value.length < 4) {
+        alert("Parola baaaaaaaa");
+      }
+      else {
+        console.log("GGAGAG")
+        set(ref(db, "Users/" + username.value), {
+          username: username.value,
+          password: password.value
+        })
+          .then(() => {
+            alert("User successfully registered.");
+          })
+          .catch((error) => {
+            alert("Fail");
+          });
+      }
+    }
+
+    submitBtn.addEventListener('click', InsertData);
+
+  </script>
+</body>
+
 </html>
