@@ -71,7 +71,7 @@ nav {
     text-align: center;
 }
 
-form {
+.form-container {
     display: grid;
     grid-template-columns: 300px 300px;
     justify-content: center;
