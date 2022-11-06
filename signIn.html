@@ -8,27 +8,19 @@
   <title>Document</title>
   <link rel="stylesheet" href="signInStyle.css" />
   <link rel="stylesheet" href="reset.css" />
-  <script>
-    function onSignIn()
-     {console.log("ceva")};    
-  </script>
 </head>
 
 <body>
   <div class="sign-in-holder">
     <img src="images/logo.png" alt="Logo of the WheelieCheck" class="logo" />
     <div class="holder-form-content">
-        <label for="username">Username</label><br />
-        <div class="email-input-holder">
-          <input type="text" name="username" id="username" class="email-input" /><br />
-        </div>
-        <label for="password">Password</label><br />
-        <div class="password-input-holder">
-          <input type="password" name="password" id="password" class="password-input" /><br />
-        </div>
-        <div class="submit-button-holder">
-          <button onclick="onSignIn()" class="submit">Sign In</button>
-        </div>
+      <label for="username">Username</label><br />
+      <div class="email-input-holder">
+        <input type="text" name="username" id="username" class="email-input" /><br />
+      </div>
+      <div class="submit-button-holder">
+        <button class="submit"><a href="file:///C:/Users/MihaiPC/Desktop/siteHQT/WheelieCheck/profileData.html">Sign In</a></button>
+      </div>
     </div>
     <p>Don't have an account? <a href="index.html">Sign Up</a> here</p>
   </div>
@@ -55,11 +47,8 @@
     const db = getDatabase();
 
     var username = document.getElementById('username');
-    var password = document.getElementById('password');
     var signInButton = document.getElementById('submit');
-    var exists = 0;
 
-    
   </script>
 </body>
 

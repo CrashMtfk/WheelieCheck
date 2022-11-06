@@ -22,8 +22,6 @@
       <div class="sign-up-div-holder">
         <label for="username">Username</label> <br />
         <input type="text" id="username" required class="username-input"/><br />
-        <label for="password">Password</label> <br />
-        <input type="password" id="password" required  class="password-input"/> <br />
         <div class="submit-holder">
           <button type="submit" id="submit">Submit</button>
         </div>
@@ -64,7 +62,6 @@
     const db = getDatabase();
 
     var username = document.getElementById('username');
-    var password = document.getElementById('password');
     var submitBtn = document.getElementById('submit');
     var exists = 0;
 
@@ -82,17 +79,12 @@
       if (username.value.length < 4) {
         alert("Username is too short.");
       }
-      else if (password.value.length < 4) {
-        alert("Password is too short.");
-      }
       else if(exists == 1) {
         alert("User exists already.");
       }
       else {
-        console.log("GGAGAG")
         set(ref(db, "Users/" + username.value), {
           username: username.value,
-          password: password.value
         })
           .then(() => {
             alert("User successfully registered.");
